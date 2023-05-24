@@ -27,7 +27,7 @@ public class Flib {
 	}
 
 	//generalize the row count
-	public int rowCount(String excelpath,String sheetname,int rowCount,int cellCount) throws EncryptedDocumentException, IOException
+	public int rowCount(String excelpath,String sheetname) throws EncryptedDocumentException, IOException
 	{
 		FileInputStream fis = new FileInputStream(excelpath);
 		Workbook wb = WorkbookFactory.create(fis);
@@ -65,4 +65,20 @@ public class Flib {
 	  return data;
 	  
 	}
+	   //generalize cell count
+	public short cellCount(String excelpath,String sheetname,int rowcount) throws EncryptedDocumentException, IOException
+	{
+		FileInputStream fis = new FileInputStream(excelpath);
+		Workbook wb = WorkbookFactory.create(fis);
+		Sheet sheet = wb.getSheet(sheetname);
+		Row row = sheet.getRow(rowcount);
+		short cc = row.getLastCellNum();
+		return cc;
+	}
+	
+	
+	
+	
+	
+	
 }

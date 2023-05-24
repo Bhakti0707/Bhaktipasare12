@@ -12,8 +12,8 @@ public class LoginPage {
 	@FindBy(name="username") private WebElement UserNameTB;
 	@FindBy(name="pwd") private WebElement PasswordTB;
 	@FindBy(id="loginButton") private WebElement loginButton;
-	@FindBy(name="remember") private WebElement checkBox;
-	@FindBy(xpath="//a[text()='Actimind Inc.']") private WebElement actiMindLink;
+	@FindBy(id="keepLoggedInCheckBox") private WebElement keepLoggedInCheckBox;
+	@FindBy(linkText="Actimind Inc.") private WebElement actiMindLink;
 	
 	//initialization
 	
@@ -34,31 +34,29 @@ public class LoginPage {
 		return loginButton;
 	}
 	public WebElement getCheckBox() {
-		return checkBox;
+		return keepLoggedInCheckBox;
 	}
 	public WebElement getActiMindLink() {
 		return actiMindLink;
 	}
 
-
-	public void setUserNameTB(WebElement userNameTB) {
-		UserNameTB = userNameTB;
-	}
-
-
-	public void setPasswordTB(WebElement passwordTB) {
-		PasswordTB = passwordTB;
-	}
-
 	
 	//operational method
 
-	public void validLogin()
+	public void validLogin(String validUsername, String validPassword)
 	{
-		UserNameTB.sendKeys(invalidusername);
-		PasswordTB.sendKeys(validPassword);
-	}
-	 
-	//
+	  UserNameTB.sendKeys(validUsername);
+	  PasswordTB.sendKeys(validPassword);
+	  loginButton.click();
+	   
+	 }
+	   public void invalidLogin(String invalidUserName, String invalidPassword) throws InterruptedException
+	   {
+		   UserNameTB.sendKeys(invalidUserName);
+		   PasswordTB.sendKeys(invalidPassword);
+		   loginButton.click();
+		   Thread.sleep(2000);
+		   UserNameTB.clear();
+	   }
 	
 }

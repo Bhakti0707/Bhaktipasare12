@@ -8,27 +8,51 @@ import org.openqa.selenium.support.PageFactory;
 public class HomePage {
 	
 	@FindBy(xpath="//a[.='Logout']") private WebElement logoutLink;
-	@FindBy(xpath="//A[@class='content tt_selected selected']/DIV[2]/IMG") private WebElement TimeTrackImage;
-	@FindBy(xpath="//A[@class='content tasks']/IMG[@class='sizer']") private WebElement TaskImage;
+	@FindBy(xpath="//A[@class='content users']/IMG[@class='sizer']") private WebElement userModule;
+	@FindBy(xpath="//A[@class='content tasks']/IMG[@class='sizer']") private WebElement taskModule;
+	@FindBy(xpath="//A[@class='content tt_selected selected']/DIV[2]/IMG") private WebElement timeTrackModule;
+	@FindBy(xpath="//A[@class='content reports']/IMG[@class='sizer']") private WebElement reportModule;
 	
-	//initiolization
+	//intialization
 		public HomePage(WebDriver driver)
 		{
 			PageFactory.initElements(driver,this);
 		}
+
+		
 	//utilization
 	
-	public WebElement getLogoutLink() {
-		return logoutLink;
-	}
+		public WebElement getLogoutLink() {
+			return logoutLink;
+		}
 
-	public WebElement getTimeTrackImage() {
-		return TimeTrackImage;
-	}
+		public WebElement getUserModule() {
+			return userModule;
+		}
 
-	public WebElement getTaskImage() {
-		return TaskImage;
-	}
+		public WebElement getTaskModule() {
+			return taskModule;
+		}
+
+		public WebElement getTimeTrackModule() {
+			return timeTrackModule;
+		}
+
+		public WebElement getReportModule() {
+			return reportModule;
+		}
+		
+		//operational Method
+		public void logoutMethod()
+		{
+			logoutLink.click();
+		}
+		
+		public void userModuleMethod()
+		{
+			userModule.click();
+		}
+	  
 
 	
 	
